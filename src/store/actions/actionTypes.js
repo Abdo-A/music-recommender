@@ -1,0 +1,8 @@
+export const START_LOADING = 'START_LOADING';
+export const END_LOADING = 'END_LOADING';
+
+export const SET_ERROR = 'SET_ERROR';
+
+export const GET_PLAYLISTS = 'GET_PLAYLISTS';
+export const GET_PLAYLIST_SONGS = 'GET_PLAYLIST_SONGS';
+export const GET_SONG_DETAILS = 'GET_SONG_DETAILS';

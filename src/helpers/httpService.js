@@ -8,4 +8,6 @@ const http = {
   delete: axios.delete,
 };
 
+export const spotifyAccessTokenApi = 'https://us-central1-music-recommender-256312.cloudfunctions.net/getspotifytoken';
+
 export default http;

@@ -2,6 +2,8 @@
   "extends": ["react-app", "airbnb"],
   "parser": "babel-eslint",
   "rules": {
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "template-curly-spacing": "off",
+    "indent": "off"
   }
 }

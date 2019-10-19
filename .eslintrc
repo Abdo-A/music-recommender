@@ -4,6 +4,7 @@
   "rules": {
     "react/jsx-filename-extension": "off",
     "template-curly-spacing": "off",
-    "indent": "off"
+    "indent": "off",
+    "no-use-before-define": "off"
   }
 }

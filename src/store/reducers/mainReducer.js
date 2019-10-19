@@ -31,19 +31,19 @@ export default (state = INITIAL_STATE, action) => {
     case actionTypes.GET_PLAYLISTS:
       return {
         ...state,
-        allDivs: action.payload,
+        playlists: action.payload,
       };
 
     case actionTypes.GET_PLAYLIST_SONGS:
       return {
         ...state,
-        allDivs: action.payload,
+        currentPlaylistSongs: action.payload,
       };
 
     case actionTypes.GET_SONG_DETAILS:
       return {
         ...state,
-        allDivs: action.payload,
+        currentSong: action.payload,
       };
 
     default:

@@ -9,7 +9,7 @@ const PlaylistsList = ({ getPlaylists, playlists, history }) => {
     getPlaylists();
   }, [getPlaylists]);
 
-  const handleViewPlaylist = (playlistId) => {
+  const handleViewTrackList = (playlistId) => {
     history.push(`/playlist/${playlistId}`);
   };
 
@@ -20,7 +20,7 @@ const PlaylistsList = ({ getPlaylists, playlists, history }) => {
         <h6
           key={playlist.id}
           style={{ cursor: 'pointer' }}
-          onClick={() => handleViewPlaylist(playlist.id)}
+          onClick={() => handleViewTrackList(playlist.id)}
         >
           {playlist.name}
 

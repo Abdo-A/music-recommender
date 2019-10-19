@@ -63,9 +63,10 @@ export const getPlaylistTracks = (playlistId = '37i9dQZF1DWYHBENPjyDpc', callbac
     .get(`${spotifyApi}/playlists/${playlistId}/tracks`, { headers: { Authorization: `Bearer ${accessToken}` } })
     .then((res) => {
       if (callback) callback();
+      const tracks = res.data.items.map((item) => item.track);
       dispatch({
         type: actionTypes.GET_PLAYLIST_TRACKS,
-        payload: res.data.items,
+        payload: tracks,
       });
     })
     .catch(() => {

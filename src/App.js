@@ -7,7 +7,6 @@ import TrackInfo from './pages/trackInfo';
 import TracksList from './pages/tracksList';
 
 import './App.css';
-import playlistsList from './pages/playlistsList';
 
 const App = () => (
   <div className="App">
@@ -15,8 +14,8 @@ const App = () => (
     <Switch>
       <Route path="/" exact component={PlaylistsList} />
       <Route path="/playlist/:playlistId" component={TracksList} />
-      <Route path="/track" component={TrackInfo} />
-      <Redirect to={playlistsList} />
+      <Route path="/track/:trackId" component={TrackInfo} />
+      <Redirect to={PlaylistsList} />
     </Switch>
   </div>
   );

@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import React from 'react';
 
 import Header from './components/header';
@@ -7,18 +7,18 @@ import TrackInfo from './pages/trackInfo';
 import TracksList from './pages/tracksList';
 
 import './App.css';
+import playlistsList from './pages/playlistsList';
 
-const App = () => {
-  return (
-    <div className='App'>
-      <Header />
-      <Switch>
-        <Route path='/' exact component={PlaylistsList} />
-        <Route path='/playlist' component={TracksList} />
-        <Route path='/track' component={TrackInfo} />
-      </Switch>
-    </div>
+const App = () => (
+  <div className="App">
+    <Header />
+    <Switch>
+      <Route path="/" exact component={PlaylistsList} />
+      <Route path="/playlist/:playlistId" component={TracksList} />
+      <Route path="/track" component={TrackInfo} />
+      <Redirect to={playlistsList} />
+    </Switch>
+  </div>
   );
-};
 
 export default App;

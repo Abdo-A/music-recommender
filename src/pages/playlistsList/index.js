@@ -12,6 +12,9 @@ const PlaylistsList = ({ getPlaylists, playlists }) => {
   return (
     <div>
       <h3>PlaylistsList</h3>
+      {playlists.map((playlist) => (
+        <h6 key={playlist.id}>{playlist.name}</h6>
+      ))}
     </div>
   );
 };

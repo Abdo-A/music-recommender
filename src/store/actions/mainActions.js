@@ -17,7 +17,7 @@ export const getPlaylists = (callback) => (dispatch) => {
     });
   });
 
-  const requestPlaylists = (accessToken, countryCode) => {
+  const requestPlaylists = (accessToken, countryCode = 'US') => {
     http
     .get(`${spotifyApi}/browse/featured-playlists?country=${countryCode}&limit=50`, { headers: { Authorization: `Bearer ${accessToken}` } })
     .then((res) => {
@@ -46,4 +46,37 @@ export const getPlaylists = (callback) => (dispatch) => {
   };
 };
 
-export const d = 3;
+
+export const getPlaylistTracks = (playlistId = '37i9dQZF1DWYHBENPjyDpc', callback) => (dispatch) => {
+  dispatch({
+    type: actionTypes.START_LOADING,
+  });
+
+  // 1- Getting spotify's access token
+  // 2- Getting playlist tracks
+  getSpotifyAccessToken().then((accessToken) => {
+      requestPlaylistTracks(accessToken);
+  });
+
+  const requestPlaylistTracks = (accessToken) => {
+    http
+    .get(`${spotifyApi}/playlists/${playlistId}/tracks`, { headers: { Authorization: `Bearer ${accessToken}` } })
+    .then((res) => {
+      if (callback) callback();
+      dispatch({
+        type: actionTypes.GET_PLAYLIST_TRACKS,
+        payload: res.data.items,
+      });
+    })
+    .catch(() => {
+      dispatch({
+        type: actionTypes.SET_ERROR,
+        payload: 'An error happened while loading playlist tracks',
+      });
+    }).finally(() => {
+      dispatch({
+        type: actionTypes.END_LOADING,
+      });
+    });
+  };
+};

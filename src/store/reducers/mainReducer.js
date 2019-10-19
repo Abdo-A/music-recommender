@@ -4,8 +4,8 @@ const INITIAL_STATE = {
   isLoading: false,
   error: '',
   playlists: [],
-  currentPlaylistSongs: [],
-  currentSong: {},
+  currentPlaylistTracks: [],
+  currentTrack: {},
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -34,16 +34,16 @@ export default (state = INITIAL_STATE, action) => {
         playlists: action.payload,
       };
 
-    case actionTypes.GET_PLAYLIST_SONGS:
+    case actionTypes.GET_PLAYLIST_TRACKS:
       return {
         ...state,
-        currentPlaylistSongs: action.payload,
+        currentPlaylistTracks: action.payload,
       };
 
-    case actionTypes.GET_SONG_DETAILS:
+    case actionTypes.GET_TRACK_DETAILS:
       return {
         ...state,
-        currentSong: action.payload,
+        currentTrack: action.payload,
       };
 
     default:

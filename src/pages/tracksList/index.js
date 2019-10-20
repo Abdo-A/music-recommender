@@ -5,17 +5,21 @@ import React, { useEffect } from 'react';
 import * as mainActions from '../../store/actions/mainActions';
 
 const TracksList = ({
- getPlaylistTracks, currentPlaylistTracks, history, match,
+  getPlaylistTracks,
+  setCurrentTrack,
+  currentPlaylistTracks,
+  history,
+  match,
 }) => {
   useEffect(() => {
-  const { playlistId } = match.params;
+    const { playlistId } = match.params;
     getPlaylistTracks(playlistId);
   }, [getPlaylistTracks, match.params]);
 
-  const handleViewTrack = (trackId) => {
-    history.push(`/track/${trackId}`);
+  const handleViewTrack = (track) => {
+    setCurrentTrack(track);
+    history.push(`/track/${track.id}`);
   };
-
 
   return (
     <div>
@@ -23,10 +27,10 @@ const TracksList = ({
       {currentPlaylistTracks.map((track) => (
         <h6
           key={track.id}
-          onClick={() => handleViewTrack(track.id)}
+          style={{ cursor: 'pointer' }}
+          onClick={() => handleViewTrack(track)}
         >
           {track.name}
-
         </h6>
       ))}
     </div>
@@ -38,6 +42,7 @@ TracksList.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
 
   getPlaylistTracks: PropTypes.func.isRequired,
+  setCurrentTrack: PropTypes.func.isRequired,
   currentPlaylistTracks: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
@@ -51,6 +56,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getPlaylistTracks: mainActions.getPlaylistTracks,
+  setCurrentTrack: mainActions.setCurrentTrack,
 };
 
 export default connect(

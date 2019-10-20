@@ -6,9 +6,9 @@ import * as mainActions from '../../store/actions/mainActions';
 
 const TrackInfo = ({ track, getTrack, match }) => {
   useEffect(() => {
-    const { trackId: selectedTrackId } = match.params;
-    if (selectedTrackId !== track.id) {
-      getTrack(selectedTrackId);
+    const { trackId: urlTrackId } = match.params;
+    if (urlTrackId !== track.id) {
+      getTrack(urlTrackId);
     }
   }, [getTrack, match.params, track.id]);
 

@@ -11,6 +11,19 @@ const useStyles = createUseStyles({
     color: 'inherit',
     textDecoration: 'inherit',
   },
+
+  loadingOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: '100vh',
+    width: '100vw',
+    background: '#0000007a',
+    zIndex: 2,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default useStyles;

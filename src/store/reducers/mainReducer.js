@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   playlists: [],
   currentPlaylistTracks: [],
   currentTrack: {},
+  chosenPlaylistId: '',
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -38,6 +39,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currentPlaylistTracks: action.payload,
+        chosenPlaylistId: action.chosenPlaylistId,
       };
 
     case actionTypes.GET_TRACK_DETAILS:

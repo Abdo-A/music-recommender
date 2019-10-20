@@ -6,8 +6,10 @@ import * as mainActions from '../../store/actions/mainActions';
 
 const PlaylistsList = ({ getPlaylists, playlists, history }) => {
   useEffect(() => {
-    getPlaylists();
-  }, [getPlaylists]);
+    if (!playlists.length) {
+      getPlaylists();
+    }
+  }, [getPlaylists, playlists.length]);
 
   const handleViewTrackList = (playlistId) => {
     history.push(`/playlist/${playlistId}`);

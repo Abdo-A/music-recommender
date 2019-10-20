@@ -28,7 +28,6 @@ export const getPlaylists = (callback) => (dispatch) => {
       });
     })
     .catch((err) => {
-      // console.log(err);
       const invalidCountryCode = err && err.response && Number(err.response.status) === 400;
       if (invalidCountryCode) {
         dispatch(getPlaylists('US'));
@@ -45,7 +44,6 @@ export const getPlaylists = (callback) => (dispatch) => {
     });
   };
 };
-
 
 export const getPlaylistTracks = (playlistId, callback) => (dispatch) => {
   dispatch({
@@ -68,6 +66,7 @@ export const getPlaylistTracks = (playlistId, callback) => (dispatch) => {
       dispatch({
         type: actionTypes.GET_PLAYLIST_TRACKS,
         payload: tracks,
+        chosenPlaylistId: playlistId,
       });
     })
     .catch(() => {

@@ -8,13 +8,16 @@ const TracksList = ({
   getPlaylistTracks,
   setCurrentTrack,
   currentPlaylistTracks,
+  chosenPlaylistId,
   history,
   match,
 }) => {
   useEffect(() => {
-    const { playlistId } = match.params;
-    getPlaylistTracks(playlistId);
-  }, [getPlaylistTracks, match.params]);
+    const { playlistId: urlPlaylistId } = match.params;
+    if (!(urlPlaylistId === chosenPlaylistId && currentPlaylistTracks.length)) {
+      getPlaylistTracks(urlPlaylistId);
+    }
+  }, [chosenPlaylistId, currentPlaylistTracks.length, getPlaylistTracks, match.params]);
 
   const handleViewTrack = (track) => {
     setCurrentTrack(track);
@@ -44,14 +47,17 @@ TracksList.propTypes = {
   getPlaylistTracks: PropTypes.func.isRequired,
   setCurrentTrack: PropTypes.func.isRequired,
   currentPlaylistTracks: PropTypes.arrayOf(PropTypes.shape({})),
+  chosenPlaylistId: PropTypes.string,
 };
 
 TracksList.defaultProps = {
   currentPlaylistTracks: [],
+  chosenPlaylistId: '',
 };
 
 const mapStateToProps = (state) => ({
   currentPlaylistTracks: state.main.currentPlaylistTracks,
+  chosenPlaylistId: state.main.chosenPlaylistId,
 });
 
 const mapDispatchToProps = {

@@ -125,3 +125,10 @@ export const setCurrentTrack = (track) => (dispatch) => {
     payload: track,
   });
 };
+
+export const setError = (error) => (dispatch) => {
+  dispatch({
+    type: actionTypes.SET_ERROR,
+    payload: error,
+  });
+};

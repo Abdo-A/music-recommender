@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 
 import * as mainActions from '../../store/actions/mainActions';
+import Playlist from '../../components/playlist';
 
 const PlaylistsList = ({ getPlaylists, playlists, history }) => {
   useEffect(() => {
@@ -19,14 +20,7 @@ const PlaylistsList = ({ getPlaylists, playlists, history }) => {
     <div>
       <h3>PlaylistsList</h3>
       {playlists.map((playlist) => (
-        <h6
-          key={playlist.id}
-          style={{ cursor: 'pointer' }}
-          onClick={() => handleViewTrackList(playlist.id)}
-        >
-          {playlist.name}
-
-        </h6>
+        <Playlist key={playlist.id} playlist={playlist} onClick={() => handleViewTrackList(playlist.id)} />
       ))}
     </div>
   );

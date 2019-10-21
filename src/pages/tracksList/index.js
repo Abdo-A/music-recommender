@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 
 import * as mainActions from '../../store/actions/mainActions';
+import Track from '../../components/track';
 
 const TracksList = ({
   getPlaylistTracks,
@@ -28,13 +29,11 @@ const TracksList = ({
     <div>
       <h3>TracksList</h3>
       {currentPlaylistTracks.map((track) => (
-        <h6
+        <Track
           key={track.id}
-          style={{ cursor: 'pointer' }}
+          track={track}
           onClick={() => handleViewTrack(track)}
-        >
-          {track.name}
-        </h6>
+        />
       ))}
     </div>
   );

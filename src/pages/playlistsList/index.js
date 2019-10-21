@@ -20,7 +20,11 @@ const PlaylistsList = ({ getPlaylists, playlists, history }) => {
     <div>
       <h3>PlaylistsList</h3>
       {playlists.map((playlist) => (
-        <Playlist key={playlist.id} playlist={playlist} onClick={() => handleViewTrackList(playlist.id)} />
+        <Playlist
+          key={playlist.id}
+          playlist={playlist}
+          onClick={() => handleViewTrackList(playlist.id)}
+        />
       ))}
     </div>
   );

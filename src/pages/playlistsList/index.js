@@ -18,7 +18,7 @@ const PlaylistsList = ({ getPlaylists, playlists, history }) => {
 
   return (
     <div>
-      <h3>PlaylistsList</h3>
+      <h3>Playlists List</h3>
       {playlists.map((playlist) => (
         <Playlist
           key={playlist.id}

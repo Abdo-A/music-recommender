@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 
+import { Badge } from 'antd';
 import * as mainActions from '../../store/actions/mainActions';
 import Track from '../../components/track';
 
@@ -25,9 +26,14 @@ const TracksList = ({
     history.push(`/track/${track.id}`);
   };
 
+  const handleClickBack = () => {
+    history.replace('/');
+  };
+
   return (
     <div>
-      <h3>TracksList</h3>
+      <Badge count={<span>&larr;</span>} style={{ backgroundColor: '#52c41a', color: 'white', cursor: 'pointer' }} onClick={handleClickBack} />
+      <h3>Tracks List</h3>
       {currentPlaylistTracks.map((track) => (
         <Track
           key={track.id}

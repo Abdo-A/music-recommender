@@ -54,13 +54,14 @@ const Track = ({ track, onClick, showAllInfo }) => {
           onClick={onClick}
           className={classes.img}
         />
-        {showAllInfo && (
+        {showAllInfo && audio && (
           <>
             <span
               onClick={playAudio}
               className={classes.audioControlIconContainer}
               role="img"
               aria-label="play"
+              title="Preview Audio"
             >
               {audioPaused ? '️▶️' : '⏸️'}
             </span>
@@ -103,13 +104,13 @@ const Track = ({ track, onClick, showAllInfo }) => {
           {durationMs && (
             <Badge
               count={`Duration ${msToMinutes(durationMs)}`}
-              style={{ backgroundColor: '#b9a6a7', marginRight: 10 }}
+              style={{ backgroundColor: '#673AB7', marginRight: 10 }}
             />
           )}
           {popularity && (
             <Badge
               count={`Popularity: ${popularity}`}
-              style={{ backgroundColor: '#673AB7', marginRight: 10 }}
+              style={{ backgroundColor: '#52c41a', marginRight: 10 }}
             />
           )}
         </div>

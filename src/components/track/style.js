@@ -2,7 +2,7 @@ import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
   container: {
-    width: '40vw',
+    width: '50vw',
     minWidth: 260,
     margin: '40px auto',
     cursor: 'initial',

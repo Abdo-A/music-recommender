@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 
 import * as mainActions from '../../store/actions/mainActions';
 import Playlist from '../../components/playlist';
+import useStyles from './style';
 
 const PlaylistsList = ({
  getPlaylists, playlists, userCountry, history,
@@ -14,6 +15,8 @@ const PlaylistsList = ({
     }
   }, [getPlaylists, playlists.length]);
 
+  const classes = useStyles();
+
   const handleViewTrackList = (playlistId) => {
     history.push(`/playlist/${playlistId}`);
   };
@@ -22,7 +25,7 @@ const PlaylistsList = ({
     <div>
       {
         userCountry
-        && <h3>Showing recommended playlists according to your country:{' '}
+        && <h3 className={classes.mainHint}>Showing recommended playlists according to your country:{' '}
           <b>{userCountry}</b>
         </h3>
       }

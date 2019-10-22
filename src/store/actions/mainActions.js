@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 import getSpotifyAccessToken from '../../helpers/getSpotifyAccessToken';
-import getUserCountryCode from '../../helpers/getUserCountryCode';
+import getUserCountryInfo from '../../helpers/getUserCountryInfo';
 import http, { spotifyApi } from '../../helpers/httpService';
 
 export const getPlaylists = (callback) => (dispatch) => {
@@ -12,8 +12,12 @@ export const getPlaylists = (callback) => (dispatch) => {
   // 2- Getting user's country code
   // 3- Getting playlists
   getSpotifyAccessToken().then((accessToken) => {
-    getUserCountryCode().then((countryCode) => {
-      requestPlaylists(accessToken, countryCode);
+    getUserCountryInfo().then((countryInfo) => {
+      dispatch({
+        type: actionTypes.SET_USER_COUNTRY,
+        payload: countryInfo.name,
+      });
+      requestPlaylists(accessToken, countryInfo.code);
     });
   });
 

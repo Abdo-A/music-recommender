@@ -5,7 +5,9 @@ import React, { useEffect } from 'react';
 import * as mainActions from '../../store/actions/mainActions';
 import Playlist from '../../components/playlist';
 
-const PlaylistsList = ({ getPlaylists, playlists, history }) => {
+const PlaylistsList = ({
+ getPlaylists, playlists, userCountry, history,
+}) => {
   useEffect(() => {
     if (!playlists.length) {
       getPlaylists();
@@ -18,7 +20,12 @@ const PlaylistsList = ({ getPlaylists, playlists, history }) => {
 
   return (
     <div>
-      <h3>Playlists List</h3>
+      {
+        userCountry
+        && <h3>Showing recommended playlists according to your country:{' '}
+          <b>{userCountry}</b>
+        </h3>
+      }
       {playlists.map((playlist) => (
         <Playlist
           key={playlist.id}
@@ -35,14 +42,17 @@ PlaylistsList.propTypes = {
 
   getPlaylists: PropTypes.func.isRequired,
   playlists: PropTypes.arrayOf(PropTypes.shape({})),
+  userCountry: PropTypes.string,
 };
 
 PlaylistsList.defaultProps = {
   playlists: [],
+  userCountry: '',
 };
 
 const mapStateToProps = (state) => ({
   playlists: state.main.playlists,
+  userCountry: state.main.userCountry,
 });
 
 const mapDispatchToProps = {

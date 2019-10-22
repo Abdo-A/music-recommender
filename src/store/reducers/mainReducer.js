@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   currentPlaylistTracks: [],
   currentTrack: {},
   chosenPlaylistId: '',
+  userCountry: '',
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -47,6 +48,12 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         currentTrack: action.payload,
       };
+
+    case actionTypes.SET_USER_COUNTRY:
+    return {
+      ...state,
+      userCountry: action.payload,
+    };
 
     default:
       return state;

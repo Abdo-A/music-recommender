@@ -17,7 +17,10 @@ const App = () => (
       <Route path="/track/:trackId" component={TrackInfo} />
       <Redirect to={PlaylistsList} />
     </Switch>
+    <p>
+      An app made by Abdelrahman Mohamadeen, as task for <b>Homitag</b>
+    </p>
   </div>
-  );
+);
 
 export default App;

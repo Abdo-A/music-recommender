@@ -1,17 +1,22 @@
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
-  mainTitle: {
-    fontFamily: 'Mansalva, cursive',
-    color: ({ theme }) => theme.colors.primary,
-    background: ({ theme }) => theme.colors.black,
-  },
-
-  titleWrapper: {
+  link: {
     color: 'inherit',
     textDecoration: 'inherit',
   },
-
+  titleContainer: {
+    background: ({ theme }) => theme.colors.black,
+  },
+  mainTitle: {
+    fontFamily: 'Mansalva, cursive',
+    color: ({ theme }) => theme.colors.primary,
+  },
+  hint: {
+    color: ({ theme }) => theme.colors.secondary,
+    fontSize: 12,
+    padding: 10,
+  },
   loadingOverlay: {
     position: 'absolute',
     top: 0,

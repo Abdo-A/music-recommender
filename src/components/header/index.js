@@ -22,8 +22,10 @@ const Header = ({ error, isLoading, setError }) => {
 
   return (
     <div>
-      <Link to="/" className={classes.titleWrapper}>
-        <h1 className={classes.mainTitle}>Spotify Music Recommender</h1>
+      <Link to="/" className={classes.link}>
+        <div className={classes.titleContainer}>
+          <h1 className={classes.mainTitle}>Spotify Music Recommender</h1>
+        </div>
       </Link>
       {
         isLoading

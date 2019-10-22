@@ -4,6 +4,7 @@ import React, { useRef, useState } from 'react';
 
 import msToMinutes from '../utils/msToMinutes';
 import truncate from '../utils/truncate';
+import useStyles from './style';
 
 import musicImg from '../../assets/images/musicImg.jpg';
 
@@ -11,6 +12,8 @@ const Track = ({ track, onClick, showAllInfo }) => {
   const [audioPaused, setAudioPaused] = useState(true);
 
   const audioElement = useRef(null);
+
+  const classes = useStyles();
 
   const {
     popularity,
@@ -43,36 +46,23 @@ const Track = ({ track, onClick, showAllInfo }) => {
   };
 
   return (
-    <Card
-      hoverable
-      style={{
-        width: '40vw',
-        minWidth: 260,
-        margin: '40px auto',
-        cursor: 'initial',
-      }}
-      bodyStyle={{ padding: 0 }}
-    >
-      <span style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <Card hoverable className={classes.container} bodyStyle={{ padding: 0 }}>
+      <span className={classes.innerContainer}>
         <img
           alt="music"
           src={imageUrl || musicImg}
           onClick={onClick}
-          style={{ cursor: 'pointer', width: 100 }}
+          className={classes.img}
         />
         {showAllInfo && (
           <>
             <span
               onClick={playAudio}
-              style={{
-                fontSize: 30, cursor: 'pointer', alignSelf: 'center', userSelect: 'none',
-              }}
+              className={classes.audioControlIconContainer}
               role="img"
               aria-label="play"
             >
-              {
-                audioPaused ? '️▶️' : '⏸️'
-              }
+              {audioPaused ? '️▶️' : '⏸️'}
             </span>
             <audio ref={audioElement} id="audio">
               <source src={audio} />
@@ -80,15 +70,7 @@ const Track = ({ track, onClick, showAllInfo }) => {
           </>
         )}
 
-        <span
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-end',
-            alignSelf: 'center',
-            margin: 20,
-          }}
-        >
+        <span className={classes.basicInfoContainer}>
           {name && (
             <h4 onClick={onClick} style={{ cursor: 'pointer' }}>
               {truncate(track.name, 30)}
@@ -96,17 +78,17 @@ const Track = ({ track, onClick, showAllInfo }) => {
           )}
           {artistName && <h5>{truncate(artistName, 40)}</h5>}
           {!showAllInfo && (
-          <span style={{ display: 'flex' }}>
-            {popularity && (
-              <Badge
-                count={`Popularity: ${popularity}`}
-                style={{ backgroundColor: '#52c41a', marginRight: 10 }}
-              />
-            )}
-            <u onClick={onClick} style={{ cursor: 'pointer' }}>
-              View track
-            </u>
-          </span>
+            <span className={classes.flex}>
+              {popularity && (
+                <Badge
+                  count={`Popularity: ${popularity}`}
+                  style={{ backgroundColor: '#52c41a', marginRight: 10 }}
+                />
+              )}
+              <u onClick={onClick} className={classes.pointer}>
+                View track
+              </u>
+            </span>
           )}
         </span>
       </span>
@@ -125,10 +107,10 @@ const Track = ({ track, onClick, showAllInfo }) => {
             />
           )}
           {popularity && (
-              <Badge
-                count={`Popularity: ${popularity}`}
-                style={{ backgroundColor: '#673AB7', marginRight: 10 }}
-              />
+            <Badge
+              count={`Popularity: ${popularity}`}
+              style={{ backgroundColor: '#673AB7', marginRight: 10 }}
+            />
           )}
         </div>
       )}
